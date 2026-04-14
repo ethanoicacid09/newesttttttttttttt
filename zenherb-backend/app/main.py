@@ -3,6 +3,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from .database import engine, Base
 from .routers import auth, products, courses, cart, orders, users, contact
 from fastapi.staticfiles import StaticFiles
+
+import os
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 # Create database tables
 Base.metadata.create_all(bind=engine)
 
@@ -39,4 +43,32 @@ async def health_check():
     return {"status": "healthy"}
 
 
-app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
+
+
+
+
+
+app = FastAPI()
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+app.mount("/", StaticFiles(directory=os.path.join(BASE_DIR, "frontend"), html=True), name="frontend")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
