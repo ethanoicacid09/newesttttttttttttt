@@ -43,16 +43,16 @@ async def health_check():
     return {"status": "healthy"}
 
 
-
-
-
-
-
 app = FastAPI()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 app.mount("/", StaticFiles(directory=os.path.join(BASE_DIR, "frontend"), html=True), name="frontend")
+
+
+
+
+
 
 
 
